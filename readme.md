@@ -1,6 +1,6 @@
 ## Introduction
-This is a small spaceshooter game written in python.
-Some of the game mechanics and a lot of the graphics and sounds are based on the great game Subspace.
+This is a small space shooter game written in python.
+Some of the game mechanics and a lot of the graphics and sound effects are based on the good old game Subspace.
 
 ## Requirements
 * cocos2d  

@@ -1,10 +1,12 @@
 from __future__ import division, unicode_literals
+# division ensures a more accurate devision from numerical perspective
+# unicode_literals switches all strings to unicode strings
 
 import random
 import math
 
 import pyglet
-from pyglet.window import key
+#from pyglet.window import key
 from pyglet.gl import *
 
 import cocos
@@ -19,8 +21,6 @@ from cocos.audio.pygame import mixer
 from config import CONFIG
 from sprites import Actor, Effect, Player
 from menu import MenuScene
-from menu import MainMenu, OptionMenu, ScoreMenu
-
 
 class MessageLayer(cocos.layer.Layer):
 
@@ -140,10 +140,9 @@ class GameControl(cocos.layer.Layer):
         self.position = pos_x, pos_y
 
         # load sounds:
-        sounds = {}
-        sounds["start_game"] = Sound(CONFIG['sounds']['start_game'])
-        sounds["pickup"] = Sound(CONFIG['sounds']['pickup'])
-        self.sounds = sounds
+        self.sounds = {}
+        self.sounds["start_game"] = Sound(CONFIG['sounds']['start_game'])
+        self.sounds["pickup"] = Sound(CONFIG['sounds']['pickup'])
 
         #todo: figure out a good way to set collision cell size?
         #cell_size = self.rPlayer * self.asteroid_scale_max * 2.0 * 1.25
@@ -412,15 +411,23 @@ class PrizeCollectorScene(cocos.scene.Scene):
         self.music = Sound(CONFIG["music"]["level"])
         self.music.set_volume(CONFIG["music"]["volume"])
 
+        # Background hum
+        self.hum = Sound(CONFIG["sounds"]["hum"])
+        self.hum.set_volume(CONFIG["sounds"]["volume"])
+
     def on_enter(self):
         super(PrizeCollectorScene, self).on_enter()
         # Start Music
         self.music.play(-1)
+        # Start hum
+        self.hum.play(-1)
 
     def on_exit(self):
         super(PrizeCollectorScene, self).on_exit()
         # Stop Music
         self.music.stop()
+        # Stop hum
+        self.hum.stop()
 
 class SpaceShooterGame(object):
 
@@ -430,7 +437,6 @@ class SpaceShooterGame(object):
 
         # Initialize audio mixer
         mixer.init()
-        #self.music = None
 
         # Initialize cocos2d director
         director.init(**CONFIG['window'])
@@ -442,32 +448,7 @@ class SpaceShooterGame(object):
         director.run(self.menu_scene)
 
     def new_game(self):
-        #scene = cocos.scene.Scene()
-
-        # # Window background color
-        # scene.add(cocos.layer.ColorLayer(0, 65, 133, 255), z=-1)
-        # # Message layer
-        # message_layer = MessageLayer()
-        # scene.add(message_layer, z=1)
-        # # Animation layer
-        # playview = Worldview(fn_show_message=message_layer.show_message)
-        # scene.add(playview, z=0)
-
-        # #Music
-        # #TODO: move to on_enter
-        # if self.music is not None: self.music.stop()
-        # self.music = Sound(CONFIG["music"]["level"])
-        # self.music.play(-1)
-        # self.music.set_volume(CONFIG["music"]["volume"])
-
         scene = PrizeCollectorScene()
         director.push(scene)
 
-        #director.run(self.menu_scene)
 
-
-#
-# if __name__ == "__main__":
-#     ssg = SpaceShooterGame()
-#     ssg.main_menu()
-#     #ssg.new_game()

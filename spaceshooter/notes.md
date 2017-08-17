@@ -10,8 +10,8 @@ TODO's in the code :)
 * Rotation of the ship on turning?
 * Implement score
 * Implement ship energy?
-* Destructable asteroids?
+* Destroyable asteroids?
 * Implement persistent options for volume
-* put on github
+* physics for bullets are off, they should use the momentum of the player
 * implement proper testing code
 * level transition effect

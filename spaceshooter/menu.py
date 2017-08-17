@@ -36,20 +36,22 @@ class MainMenu(Menu):
         init_layout(self)
 
         items = []
-        items.append(MenuItem('New Game', new_game_func))
-        items.append(MenuItem('Options', self.on_options))
-        items.append(MenuItem('Scores', self.on_scores))
-        items.append(MenuItem('Quit', self.on_quit))
+        items.append(MenuItem('Start ', new_game_func))
+        items.append(MenuItem('Options ', self.on_options))
+        items.append(MenuItem('Scores ', self.on_scores))
+        items.append(MenuItem('Quit ', self.on_quit))
+
         self.create_menu(items, zoom_in(), zoom_out())
 
     # Callbacks
-    def on_options(self):
+    # dt parameter allows these to be called from the pyglet scheduler (timed execution for testing)
+    def on_options(self, dt=0.):
         self.parent.switch_to(1)
 
-    def on_scores(self):
+    def on_scores(self, dt=0.):
         self.parent.switch_to(2)
 
-    def on_quit(self):
+    def on_quit(self, dt=0.):
         director.pop()
 
 
@@ -81,6 +83,11 @@ class OptionMenu(Menu):
 
     def on_show_fps(self, value):
         director.show_FPS = value
+
+    def volume_to_float(self, volume):
+        increment = 0.1
+        f = self.volumes.index(volume) * increment
+        return f
 
     def on_sound_volume(self, value):
         print value
@@ -121,7 +128,10 @@ class MenuScene(Scene):
         super(MenuScene, self).__init__()
 
         # Prepare main menu
-        menulayer = MultiplexLayer(MainMenu(new_game_func), OptionMenu(), ScoreMenu())
+        self.main_menu = MainMenu(new_game_func)
+        self.option_menu = OptionMenu()
+        self.score_menu = ScoreMenu()
+        menulayer = MultiplexLayer(self.main_menu, self.option_menu, self.score_menu)
         self.add(ColorLayer(0, 0, 0, 255), z=-1)
         # Animated shield
         shield_anim = pyglet.image.load_animation(CONFIG["graphics"]["rotating_shield"])
