@@ -1,0 +1,140 @@
+{
+    "actors": {
+        "asteroid": {
+            "animation": "spaceshooter/assets/graphics/over2_r.png",
+            "grid": [3,10],
+            "loop": true,
+            "period": 0.05,
+            "scale_max": 3.0,
+            "scale_min": 0.5
+        }, 
+        "bullet": {
+            "animation": "spaceshooter/assets/graphics/bullet_l2_r.png",
+            "grid": [1,4],
+            "loop": true,
+            "period": 0.1,
+            "scale": 1.0,
+            "spawn_sound": "spaceshooter/assets/sounds/gun1.wav",
+            "time_to_live": 1.0
+        }, 
+        "gate": {
+            "animation": "spaceshooter/assets/graphics/over5_r.png",
+            "grid": [6,4],
+            "loop": true,
+            "period": 0.1,
+            "scale": 1.5
+        }, 
+        "prize": {
+            "_______time_to_live": 5.0, 
+            "animation": "spaceshooter/assets/graphics/prize.png",
+            "grid": [
+                1, 
+                10
+            ], 
+            "loop": true, 
+            "period": 0.025, 
+            "scale": 1.0
+        }
+    }, 
+    "effects": {
+        "exhaust": {
+            "animation": "spaceshooter/assets/graphics/exhaust_1.png",
+            "grid": [
+                1, 
+                19
+            ], 
+            "loop": false, 
+            "period": 0.01, 
+            "scale": 1.0
+        }, 
+        "impact": {
+            "animation": "spaceshooter/assets/graphics/explode0.png",
+            "grid": [
+                1, 
+                7
+            ], 
+            "loop": false, 
+            "period": 0.025, 
+            "scale": 2.0, 
+            "spawn_sound": "spaceshooter/assets/sounds/explode0.wav"
+        }, 
+        "player_explosion": {
+            "animation": "spaceshooter/assets/graphics/explode2_r.png",
+            "grid": [
+                11, 
+                4
+            ], 
+            "loop": false, 
+            "period": 0.025, 
+            "scale": 2.0, 
+            "spawn_sound": "spaceshooter/assets/sounds/explode2.wav"
+        }
+    }, 
+    "game": {
+        "bindings": {
+            "_comment": "These bindings are the numerical values for pyglet keys (from pyglet.window import key: key.LEFT=65361, key.UP=65362, key.RIGHT=65363).", 
+            "backward": 65364, 
+            "forward": 65362, 
+            "left": 65361, 
+            "right": 65363, 
+            "shoot": 32
+        }, 
+        "palette": {
+            "background": [
+                0, 
+                0, 
+                0
+            ], 
+            "gate_closed": [
+                255,
+                0,
+                0
+            ], 
+            "gate_open": [
+                255,
+                255,
+                255
+            ]
+        }, 
+        "scale": 1
+    }, 
+    "graphics": {
+        "rotating_shield": "spaceshooter/assets/graphics/Subspace_Shield.gif"
+    }, 
+    "music": {
+        "level": "spaceshooter/assets/music/Alone Against Enemy.ogg",
+        "menu": "spaceshooter/assets/music/Brave Pilots (Menu Screen).ogg",
+        "volume": 0.25
+    }, 
+    "ships": {
+        "player": {
+            "image": "spaceshooter/assets/graphics/ship0_single.png",
+            "scale": 1.0,
+            "acceleration": 85.0,
+            "acceleration_increment": 25.0,
+            "angular_velocity_comment": "Angular velocity in degrees per second.",
+            "angular_velocity": 250.0,
+            "angular_velocity_increment": 50.0,
+            "rate_of_fire_comment": "Rate of fire in shots per second",
+            "rate_of_fire": 4,
+            "rate_of_fire_increment": 2,
+            "top_speed": 100.0, 
+            "top_speed_increment": 25.0
+        }
+    }, 
+    "sounds": {
+        "menu_select": "spaceshooter/assets/sounds/mine2.wav",
+        "pickup": "spaceshooter/assets/sounds/prize.wav",
+        "start_game": "spaceshooter/assets/sounds/bong2.wav"
+    }, 
+    "view": {
+        "font_file": "spaceshooter/assets/fonts/Huge.ttf",
+        "font_name": "sshugefont"
+    }, 
+    "window": {
+        "height": 600, 
+        "resizable": true, 
+        "vsync": true, 
+        "width": 800
+    }
+}

@@ -1,0 +1,14 @@
+# exclude the savegame data
+savegame
+
+# exclude the NonGit subfolder
+non_git/
+
+# exclude the cocos2d source subfolder
+cocos2d-0.6.4/
+
+# exclude compiled python files
+*.py[cod]
+
+# exclude pycharm project information
+.idea/
