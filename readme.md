@@ -12,8 +12,8 @@ Some of the game mechanics and a lot of the graphics and sounds are based on the
   Special thanks to whoever wrote the balldrive_toy_game.py example :-)
 
 * **Subspace**  
-  As a tribute and because of reasons I used a lot of graphics and sounds from a game called Subspace. I'm not sure who currently owns the copyright on these, I found them on the web.  
-  Source of note are two other subspace-like projects:  
+  As a tribute and because of nostalgic reasons I used a lot of graphics and sounds from an old game called Subspace. I'm not sure who currently owns the copyright on these, I found them on the web.  
+  Sources of note are two other subspace-like projects:  
   * https://github.com/perplexes/valor
   * http://ss-discretion.sourceforge.net/
 
