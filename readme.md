@@ -5,6 +5,8 @@ Some of the game mechanics and a lot of the graphics and sound effects are based
 ## Requirements
 * cocos2d  
   http://python.cocos2d.org/doc.html
+* pygame
+  for the audio to work SDL is required, easiest I found so far is to install pygame.
 
 ## Credits
 

@@ -11,18 +11,6 @@
       "scale_max": 3.0, 
       "scale_min": 0.5
     }, 
-    "bullet": {
-      "animation": "spaceshooter/assets/graphics/bullet_l2_r.png", 
-      "grid": [
-        1, 
-        4
-      ], 
-      "loop": true, 
-      "period": 0.1, 
-      "scale": 1.0, 
-      "spawn_sound": "spaceshooter/assets/sounds/gun1.wav", 
-      "time_to_live": 1.0
-    }, 
     "gate": {
       "animation": "spaceshooter/assets/graphics/over5_r.png", 
       "grid": [
@@ -115,6 +103,92 @@
     "menu": "spaceshooter/assets/music/Brave Pilots (Menu Screen).ogg", 
     "volume": 0.25
   }, 
+  "projectiles": {
+    "bomb": {
+      "grid": [
+        1, 
+        10
+      ], 
+      "l1": {
+        "animation": "spaceshooter/assets/graphics/bomb_l1_r.png", 
+        "spawn_sound": "spaceshooter/assets/sounds/bomb1.wav"
+      }, 
+      "l1-b": {
+        "animation": "spaceshooter/assets/graphics/bomb_bb_l1_r.png", 
+        "spawn_sound": "spaceshooter/assets/sounds/bomb1.wav"
+      }, 
+      "l2": {
+        "animation": "spaceshooter/assets/graphics/bomb_l2_r.png", 
+        "spawn_sound": "spaceshooter/assets/sounds/bomb2.wav"
+      }, 
+      "l2-b": {
+        "animation": "spaceshooter/assets/graphics/bomb_bb_l2_r.png", 
+        "spawn_sound": "spaceshooter/assets/sounds/bomb2.wav"
+      }, 
+      "l3": {
+        "animation": "spaceshooter/assets/graphics/bomb_l3_r.png", 
+        "spawn_sound": "spaceshooter/assets/sounds/bomb3.wav"
+      }, 
+      "l3-b": {
+        "animation": "spaceshooter/assets/graphics/bomb_bb_l3_r.png", 
+        "spawn_sound": "spaceshooter/assets/sounds/bomb3.wav"
+      }, 
+      "l4": {
+        "animation": "spaceshooter/assets/graphics/bomb_l4_r.png", 
+        "spawn_sound": "spaceshooter/assets/sounds/bomb4.wav"
+      }, 
+      "l4-b": {
+        "animation": "spaceshooter/assets/graphics/bomb_bb_l4_r.png", 
+        "spawn_sound": "spaceshooter/assets/sounds/bomb4.wav"
+      }, 
+      "loop": true, 
+      "period": 0.1, 
+      "scale": 1.0, 
+      "time_to_live": 20.0
+    }, 
+    "bullet": {
+      "grid": [
+        1, 
+        4
+      ], 
+      "l1": {
+        "animation": "spaceshooter/assets/graphics/bullet_l1_r.png", 
+        "spawn_sound": "spaceshooter/assets/sounds/gun1.wav"
+      }, 
+      "l1-b": {
+        "animation": "spaceshooter/assets/graphics/bullet_b_l1_r.png", 
+        "spawn_sound": "spaceshooter/assets/sounds/gun1.wav"
+      }, 
+      "l2": {
+        "animation": "spaceshooter/assets/graphics/bullet_l2_r.png", 
+        "spawn_sound": "spaceshooter/assets/sounds/gun2.wav"
+      }, 
+      "l2-b": {
+        "animation": "spaceshooter/assets/graphics/bullet_b_l2_r.png", 
+        "spawn_sound": "spaceshooter/assets/sounds/gun2.wav"
+      }, 
+      "l3": {
+        "animation": "spaceshooter/assets/graphics/bullet_l3_r.png", 
+        "spawn_sound": "spaceshooter/assets/sounds/gun3.wav"
+      }, 
+      "l3-b": {
+        "animation": "spaceshooter/assets/graphics/bullet_b_l3_r.png", 
+        "spawn_sound": "spaceshooter/assets/sounds/gun3.wav"
+      }, 
+      "l4": {
+        "animation": "spaceshooter/assets/graphics/bullet_l4_r.png", 
+        "spawn_sound": "spaceshooter/assets/sounds/gun4.wav"
+      }, 
+      "l4-b": {
+        "animation": "spaceshooter/assets/graphics/bullet_b_l4_r.png", 
+        "spawn_sound": "spaceshooter/assets/sounds/gun4.wav"
+      }, 
+      "loop": true, 
+      "period": 0.1, 
+      "scale": 1.0, 
+      "time_to_live": 15.0
+    }
+  }, 
   "ships": {
     "player": {
       "acceleration": 85.0, 
@@ -135,7 +209,7 @@
     "hum": "spaceshooter/assets/sounds/hum.wav", 
     "menu_select": "spaceshooter/assets/sounds/warppnt.wav", 
     "pickup": "spaceshooter/assets/sounds/prize.wav", 
-    "start_game": "spaceshooter/assets/sounds/bong2.wav",
+    "start_game": "spaceshooter/assets/sounds/bong2.wav", 
     "volume": 1.0
   }, 
   "view": {

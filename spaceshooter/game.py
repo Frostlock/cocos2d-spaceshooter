@@ -19,7 +19,7 @@ from cocos.audio.pygame.mixer import Sound
 from cocos.audio.pygame import mixer
 
 from config import CONFIG
-from sprites import Actor, Effect, Player
+from sprites import Actor, Effect, Player, Projectile
 from menu import MenuScene
 
 class MessageLayer(cocos.layer.Layer):
@@ -360,7 +360,8 @@ class GameControl(cocos.layer.Layer):
                 if self._time_since_last_shot > 1 / self.player.rate_of_fire:
                     bullet_x = self.player.x + self.player.direction.x * 10
                     bullet_y = self.player.y + self.player.direction.y * 10
-                    bullet = Actor("bullet", None, bullet_x, bullet_y)
+                    bullet = Projectile("bullet", 3, 1)
+                    bullet.update_center(eu.Vector2(bullet_x, bullet_y))
                     bullet.set_collision_manager(self.collman)
                     bullet.rotation = self.player.rotation
                     #laser should take direction a shoot straight

@@ -107,6 +107,7 @@ class Effect(ConfiguredSprite):
             # TODO: This will go wrong for an effect with an image instead of an animation.
             self.do(ac.Delay(self.image.get_duration()) + ac.CallFunc(self.kill))
 
+
 class Actor(ConfiguredSprite):
     """
     Actor has 
@@ -177,13 +178,68 @@ class Actor(ConfiguredSprite):
         # Handle collisions
         if self._collman is not None:
             for other in self._collman.iter_colliding(self):
-                if self.type == "bullet":
+                if self.type == "projectile":
                     if other.type == 'asteroid':
                         # Create impact effect
                         expl = Effect("impact", self.x, self.y)
                         self.parent.add(expl, z=20)
                         # Remove self
                         self.kill()
+
+
+class Projectile(Actor):
+
+    """
+    Projectiles
+        bouncing or non-bouncing
+        bullet or bomb
+        different strength levels (with different sprites)
+    """
+
+    @property
+    def projectile_type(self):
+        return self._projectile_type
+
+    @property
+    def level(self):
+        return self._level
+
+    @property
+    def bounce_count(self):
+        return self._bounce_count
+
+    @bounce_count.setter
+    def bounce_count(self, bounce_count):
+        self._bounce_count = bounce_count
+        if bounce_count > 4: self._bounce_count = 4
+        if bounce_count < 1: self._bounce_count = 1
+
+    def __init__(self, projectile_type="bullet",level=1, bounce_count=0): #, cx=0., cy=0., scale=1.0)
+        """
+        Constructor to create projectiles
+        Config will be read from config file based on provided attributes.
+        :param projectile_type: bomb or bullet
+        :param level: 1, 2 or 3 (increasing strength)
+        :param bounce_count: Int to define how many times the projectile can bounce.
+        :return: Projectile object
+        """
+
+        # Sanity checks
+        expected_projectile_types = ["bomb", "bullet"]
+        if projectile_type not in expected_projectile_types:
+            raise ValueError("Type should be one of " + str(expected_projectile_types))
+
+        #Assemble the config dictionary for this projectile
+        projectile_sprite = "l" + str(level)
+        if bounce_count > 0: projectile_sprite += "-b"
+        config = {}
+        config.update(CONFIG["projectiles"][projectile_type])
+        config.update(CONFIG["projectiles"][projectile_type][projectile_sprite])
+
+        self._type = type
+        self._level = level
+        self.bounce_count = bounce_count
+        super(Projectile, self).__init__("projectile", config) #, cx, cy, scale)
 
 
 class Ship(Actor):
@@ -208,6 +264,26 @@ class Ship(Actor):
     @property
     def rate_of_fire(self):
         return self._rate_of_fire
+
+    @property
+    def gun_level(self):
+        return self._gun_level
+
+    @gun_level.setter
+    def gun_level(self, gun_level):
+        self._gun_level = gun_level
+        if gun_level > 3: self._gun_level = 3
+        if gun_level < 1: self._gun_level = 1
+
+    @property
+    def bomb_level(self):
+        return self._bomb_level
+
+    @bomb_level.setter
+    def bomb_level(self, bomb_level):
+        self._bomb_level = bomb_level
+        if bomb_level > 3: self._bomb_level = 3
+        if bomb_level < 1: self._bomb_level = 1
 
     def __init__(self, ship_type, config=None, cx=0., cy=0., scale=1.0):
         if config is None:
